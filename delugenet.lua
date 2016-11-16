@@ -10,7 +10,7 @@ local Convolution = cudnn.SpatialConvolution
 local Avg = cudnn.SpatialAveragePooling
 local ReLU = cudnn.ReLU
 local Max = cudnn.SpatialMaxPooling
-local SBatchNorm = nn.SpatialBatchNormalization
+local SBatchNorm = cudnn.SpatialBatchNormalization
 
 local function createModel(opt)
    local depth = opt.depth
@@ -78,7 +78,7 @@ local function createModel(opt)
    local model = nn.Sequential()
    if opt.dataset == 'cifar10' or opt.dataset == 'cifar100' then
       -- Configurations:
-      --  # compositeLayer, # features, compositeLayer type
+      --  # compositeLayer in first block, width
       local cfg = {
          [146.1]  = {8,1},
          [146.2] = {8,1.75},
