@@ -21,17 +21,17 @@ optnet: [https://github.com/fmassa/optimize-net](https://github.com/fmassa/optim
 
 
 DelugeNet-146 on CIFAR-10<br>
-`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 146.1`
+`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 146.1`<br><br>
 DelugeNet-146 on CIFAR-100<br>
-`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.1`
+`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.1`<br><br>
 DelugeNet-218 on CIFAR-10<br>
-`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 218`
+`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 218`<br><br>
 DelugeNet-218 on CIFAR-100<br>
-`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 218`
+`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 218`<br><br>
 Wide-DelugeNet-146 on CIFAR-10<br>
-`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 146.2`
+`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 146.2`<br><br>
 Wide-DelugeNet-146 on CIFAR-100<br>
-`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.2`
+`th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.2`<br>
   
 <br>
 # ImageNet
