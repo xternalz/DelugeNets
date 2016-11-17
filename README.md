@@ -18,17 +18,19 @@ optnet: [https://github.com/fmassa/optimize-net](https://github.com/fmassa/optim
 3. Modify the learning rate schedule codes in `train.lua` for CIFAR-10 and CIFAR-100 to:<br>
 `decay = epoch >= 225 and 2 or epoch >= 150 and 1 or 0`<br><br>
 4. Train DelugeNets:
-  * DelugeNet-146 on CIFAR-10<br>
+
+
+DelugeNet-146 on CIFAR-10<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 146.1`
-  * DelugeNet-146 on CIFAR-100<br>
+DelugeNet-146 on CIFAR-100<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.1`
-  * DelugeNet-218 on CIFAR-10<br>
+DelugeNet-218 on CIFAR-10<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 218`
-  * DelugeNet-218 on CIFAR-100<br>
+DelugeNet-218 on CIFAR-100<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 218`
-  * Wide-DelugeNet-146 on CIFAR-10<br>
+Wide-DelugeNet-146 on CIFAR-10<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 146.2`
-  * Wide-DelugeNet-146 on CIFAR-100<br>
+Wide-DelugeNet-146 on CIFAR-100<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.2`
   
 <br>
