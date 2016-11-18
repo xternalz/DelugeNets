@@ -1,5 +1,5 @@
 # DelugeNets
-Deluge Networks (DelugeNets) are a novel class of neural networks facilitating massive and flexible cross-layer information inflows from preceding layers to succeeding layers. For more technical details of DelugeNets, please refer to the paper: [http://arxiv.org/comingsoon](http://arxiv.org/comingsoon).
+Deluge Networks (DelugeNets) are a novel class of neural networks facilitating massive and flexible cross-layer information inflows from preceding layers to succeeding layers. For more technical details of DelugeNets, please refer to the paper: [https://arxiv.org/abs/1611.05552](https://arxiv.org/abs/1611.05552).
 <br><br>
 # Prerequisite
 fb.resnet.torch: [https://github.com/facebook/fb.resnet.torch](https://github.com/facebook/fb.resnet.torch)<br>
