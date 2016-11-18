@@ -88,7 +88,7 @@ local function createModel(opt)
       assert(cfg[depth], 'Invalid depth: ' .. tostring(depth))
       local n, width = table.unpack(cfg[depth])
       iChannels = 32*width
-      print(' | DelugeNet-' .. depth .. ' CIFAR-10')
+      print(' | DelugeNet-' .. depth .. ' ' .. (opt.dataset == 'cifar10' and 'CIFAR-10' or 'CIFAR-100'))
 
       -- The CIFAR model
       model:add(Convolution(3,32*width,3,3,1,1,1,1))
