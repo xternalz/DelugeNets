@@ -35,6 +35,12 @@ Wide-DelugeNet-146 on CIFAR-100<br>
 
 <br>
 # ImageNet
+| Model              | #Params |   top-1 error  |   top-5 error   |
+|--------------------|--------:|---------------:|----------------:|
+| DelugeNet-92       | 43.4M   | 22.05          | 6.03            |
+| DelugeNet-104      | 51.4M   | 21.86          | 5.98            |
+
+####How to run
 1. Follow the guide at [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch) repository on how to set up ImageNet dataset.<br><br>
 2. To train ImageNet-based models, you need minimum of 8 TITAN X GPUs:
 
