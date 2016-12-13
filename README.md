@@ -36,6 +36,7 @@ Wide-DelugeNet-146 on CIFAR-100<br>
 <br>
 # ImageNet
 Validation errors (single-crop 224x224)
+
 | Model              | #Params |   top-1 error  |   top-5 error   |
 |--------------------|--------:|---------------:|----------------:|
 | DelugeNet-92       | 43.4M   | 22.05          | 6.03            |
