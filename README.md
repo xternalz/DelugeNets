@@ -32,7 +32,14 @@ Wide-DelugeNet-146 on CIFAR-10<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 146.2`<br><br>
 Wide-DelugeNet-146 on CIFAR-100<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.2`<br>
-  
+
 <br>
 # ImageNet
-coming soon
+1. Follow the guide at [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch) repository on how to set up ImageNet dataset.<br><br>
+2. To train ImageNet-based models, you need minimum of 8 TITAN X GPUs:
+
+
+DelugeNet-92<br>
+`th main.lua -nGPUs 8 -batchSize 256 -nEpochs 100 -optnet true -netType delugenet -dataset imagenet -depth 92`<br><br>
+DelugeNet-104<br>
+`th main.lua -nGPUs 8 -batchSize 256 -nEpochs 100 -optnet true -netType delugenet -dataset imagenet -depth 104`<br>

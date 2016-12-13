@@ -9,8 +9,8 @@ require 'models/CrossLayerDepthwiseConvolution'
 local Convolution = cudnn.SpatialConvolution
 local Avg = cudnn.SpatialAveragePooling
 local ReLU = cudnn.ReLU
-local Max = cudnn.SpatialMaxPooling
-local SBatchNorm = cudnn.SpatialBatchNormalization
+local Max = nn.SpatialMaxPooling
+local SBatchNorm = nn.SpatialBatchNormalization
 
 local function createModel(opt)
    local depth = opt.depth
@@ -27,7 +27,6 @@ local function createModel(opt)
       if type == 'both_preact' or type ~= 'no_preact' then
          if nLayers == 1 then
             s:add(SBatchNorm(nInputPlane))
-            s:add(ReLU(true))
          elseif nLayers > 1 then
             s:add(nn.CrossLayerDepthwiseConvolution(nInputPlane, nLayers))
             s:add(SBatchNorm(nInputPlane))
@@ -37,8 +36,11 @@ local function createModel(opt)
                s:add(Convolution(nInputPlane,n*2,3,3,stride,stride,1,1))
                return block:add(s)
             end
-            s:add(ReLU(true))
          end
+         s:add(ReLU(true))
+      elseif type == 'no_preact' then
+         s:add(Convolution(nInputPlane,n*2,1,1,1,1,0,0))
+         return block:add(s)
       end
       s:add(Convolution(nInputPlane,n,1,1,1,1,0,0))
       s:add(SBatchNorm(n))
@@ -76,7 +78,35 @@ local function createModel(opt)
    end
 
    local model = nn.Sequential()
-   if opt.dataset == 'cifar10' or opt.dataset == 'cifar100' then
+   if opt.dataset == 'imagenet' then
+      -- Configurations:
+      -- compositeLayer counts
+      local cfg = {
+        [92] = {7+1, 7+1, 8+1, 8+1},
+        [104] = {7+1, 8+1, 9+1, 10+1},
+      }
+
+      assert(cfg[depth], 'Invalid depth: ' .. tostring(depth))
+      local def = table.unpack(cfg[depth])
+      iChannels = 64
+      print(' | DelugeNet-' .. depth .. ' ImageNet')
+
+      -- The ImageNet model
+      model:add(Convolution(3,64,7,7,2,2,3,3))
+      model:add(SBatchNorm(64))
+      model:add(ReLU(true))
+      model:add(Max(3,3,2,2,1,1))
+      model:add(block(64,  def[1], 1, 'first'))
+      model:add(block(128, def[2], 2))
+      model:add(block(256, def[3], 2))
+      model:add(block(512, def[4], 2))
+      model:add(nn.CrossLayerDepthwiseConvolution(iChannels, nLayers))
+      model:add(SBatchNorm(iChannels))
+      model:add(ReLU(true))
+      model:add(Avg(7, 7, 1, 1))
+      model:add(nn.View(iChannels):setNumInputDims(3))
+      model:add(nn.Linear(iChannels, 1000))
+   elseif opt.dataset == 'cifar10' or opt.dataset == 'cifar100' then
       -- Configurations:
       --  # compositeLayer in first block, width
       local cfg = {
