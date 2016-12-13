@@ -48,6 +48,8 @@ Validation errors (single-crop 224x224)
 
 
 DelugeNet-92<br>
-`th main.lua -nGPU 8 -batchSize 256 -nEpochs 100 -optnet true -netType delugenet -dataset imagenet -depth 92`<br><br>
+`th main.lua -nGPU 8 -batchSize 256 -nEpochs 100 -optnet true -netType delugenet -dataset imagenet -data IMAGENET_PATH -depth 92`<br><br>
 DelugeNet-104<br>
-`th main.lua -nGPU 8 -batchSize 256 -nEpochs 100 -optnet true -netType delugenet -dataset imagenet -depth 104`<br>
+`th main.lua -nGPU 8 -batchSize 256 -nEpochs 100 -optnet true -netType delugenet -dataset imagenet -data IMAGENET_PATH -depth 104`<br>
+
+Replace `IMAGENET_PATH` with ImageNet dataset path.
