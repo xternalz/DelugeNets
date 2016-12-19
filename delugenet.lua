@@ -84,6 +84,7 @@ local function createModel(opt)
       local cfg = {
         [92] = {7+1, 7+1, 8+1, 8+1},
         [104] = {7+1, 8+1, 9+1, 10+1},
+        [122] = {7+1, 9+1, 11+1, 13+1},
       }
 
       assert(cfg[depth], 'Invalid depth: ' .. tostring(depth))
