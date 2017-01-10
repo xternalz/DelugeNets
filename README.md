@@ -8,23 +8,18 @@ optnet: [https://github.com/fmassa/optimize-net](https://github.com/fmassa/optim
 # Further Memory Optimization
 Insert these lines to the `M.setup` function in `models/init.lua`:
 ```
-local function sharingKey(m)
-  local key = torch.type(m)
-  if m.__shareOutputKey then
-     key = key .. ':' .. m.__shareOutputKey
-  end
-  return key
-end
-
 local cache = {}
 model:apply(function(m)
   local moduleType = torch.type(m)
   if moduleType == 'nn.CrossLayerDepthwiseConvolution' then
-     local key = sharingKey(m)
-     if cache[key] == nil then
-        cache[key] = torch.CudaStorage(1)
+     if cache['cldc-o'] == nil then
+        cache['cldc-o'] = torch.CudaStorage(1)
      end
-     m.SBatchNorm.output = torch.CudaTensor(cache[key], 1, 0)
+     if cache['cldc-g'] == nil then
+        cache['cldc-g'] = torch.CudaStorage(1)
+     end
+     m.SBatchNorm.output = torch.CudaTensor(cache['cldc-o'], 1, 0)
+     m.SBatchNorm.gradInput = torch.CudaTensor(cache['cldc-g'], 1, 0)
   end
 end)
 ```
