@@ -28,7 +28,7 @@ model:apply(function(m)
   end
 end)
 ```
-<br><br>
+<br>
 # CIFAR-10 & CIFAR-100
 | Model              | #Params | CIFAR-10 error | CIFAR-100 error |
 |--------------------|--------:|---------------:|----------------:|
