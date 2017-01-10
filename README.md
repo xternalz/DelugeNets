@@ -5,6 +5,30 @@ Deluge Networks (DelugeNets) are a novel class of neural networks facilitating m
 fb.resnet.torch: [https://github.com/facebook/fb.resnet.torch](https://github.com/facebook/fb.resnet.torch)<br>
 optnet: [https://github.com/fmassa/optimize-net](https://github.com/fmassa/optimize-net)
 <br><br>
+# Further Memory Optimization
+Insert these lines to the `M.setup` function in `models/init.lua`:
+```
+local function sharingKey(m)
+  local key = torch.type(m)
+  if m.__shareOutputKey then
+     key = key .. ':' .. m.__shareOutputKey
+  end
+  return key
+end
+
+local cache = {}
+model:apply(function(m)
+  local moduleType = torch.type(m)
+  if moduleType == 'nn.CrossLayerDepthwiseConvolution' then
+     local key = sharingKey(m)
+     if cache[key] == nil then
+        cache[key] = torch.CudaStorage(1)
+     end
+     m.SBatchNorm.output = torch.CudaTensor(cache[key], 1, 0)
+  end
+end)
+```
+<br><br>
 # CIFAR-10 & CIFAR-100
 | Model              | #Params | CIFAR-10 error | CIFAR-100 error |
 |--------------------|--------:|---------------:|----------------:|
