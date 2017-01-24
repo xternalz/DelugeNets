@@ -9,8 +9,8 @@ require 'models/CrossLayerDepthwiseConvolution'
 local Convolution = cudnn.SpatialConvolution
 local Avg = cudnn.SpatialAveragePooling
 local ReLU = cudnn.ReLU
-local Max = nn.SpatialMaxPooling
-local SBatchNorm = nn.SpatialBatchNormalization
+local Max = cudnn.SpatialMaxPooling
+local SBatchNorm = cudnn.SpatialBatchNormalization
 
 local function createModel(opt)
    local depth = opt.depth

@@ -15,11 +15,7 @@ model:apply(function(m)
      if cache['cldc-o'] == nil then
         cache['cldc-o'] = torch.CudaStorage(1)
      end
-     if cache['cldc-g'] == nil then
-        cache['cldc-g'] = torch.CudaStorage(1)
-     end
      m.SBatchNorm.output = torch.CudaTensor(cache['cldc-o'], 1, 0)
-     m.SBatchNorm.gradInput = torch.CudaTensor(cache['cldc-g'], 1, 0)
   end
 end)
 ```

@@ -1,4 +1,5 @@
 require 'nn'
+require 'cudnn'
 
 -- Cross-layer Depthwise Convolutional Layer
 
@@ -15,7 +16,7 @@ function CrossLayerDepthwiseConvolution:__init(nInputPlane, nLayers)
   self.gradWeight = torch.Tensor(nInputPlane,nLayers)
   self.gradBias = torch.Tensor(nInputPlane,nLayers)
   self:reset()
-  self.SBatchNorm = nn.SpatialBatchNormalization(nInputPlane)
+  self.SBatchNorm = cudnn.SpatialBatchNormalization(nInputPlane)
   self.modules = {self.SBatchNorm}
   self.train = true
   self.gradInput = {}
