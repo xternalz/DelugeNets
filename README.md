@@ -20,6 +20,12 @@ model:apply(function(m)
 end)
 ```
 <br>
+# Training Divergence
+There are occassional divergence issues when training the networks. For stability, please set cuDNN to deterministic mode:
+```
+-cudnn deterministic
+```
+<br>
 # CIFAR-10 & CIFAR-100
 | Model              | #Params | CIFAR-10 error | CIFAR-100 error |
 |--------------------|--------:|---------------:|----------------:|
