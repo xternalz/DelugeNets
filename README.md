@@ -55,8 +55,7 @@ Wide-DelugeNet-146 on CIFAR-10<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar10 -depth 146.2`<br><br>
 Wide-DelugeNet-146 on CIFAR-100<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.2`<br>
-
-<br>
+<br><br>
 ## ImageNet
 Validation errors (single-crop 224x224)
 
