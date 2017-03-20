@@ -20,20 +20,22 @@ model:apply(function(m)
 end)
 ```
 <br>
-# Training Divergence
+
+
+## Training Divergence
 There are occassional divergence issues when training the networks. For stability, please set cuDNN to deterministic mode:
 ```
 -cudnn deterministic
 ```
-<br>
-# CIFAR-10 & CIFAR-100
+<br><br>
+## CIFAR-10 & CIFAR-100
 | Model              | #Params | CIFAR-10 error | CIFAR-100 error |
 |--------------------|--------:|---------------:|----------------:|
 | DelugeNet-146      | 6.7M    | 3.98           | 19.72           |
 | DelugeNet-218      | 10.0M   | 3.88           | 19.31           |
 | Wide-DelugeNet-146 | 20.2M   | 3.76           | 19.02           |
 
-####How to run
+#### How to run
 1. Make sure that [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch) runs well on your machine.<br><br>
 2. Copy `delugenet.lua` and `CrossLayerDepthwiseConvolution.lua` to `fb.resnet.torch/models`.<br><br>
 3. Modify the learning rate schedule codes in `train.lua` for CIFAR-10 and CIFAR-100 to:<br>
@@ -55,7 +57,7 @@ Wide-DelugeNet-146 on CIFAR-100<br>
 `th main.lua -batchSize 64 -nEpochs 300 -optnet true -netType delugenet -dataset cifar100 -depth 146.2`<br>
 
 <br>
-# ImageNet
+## ImageNet
 Validation errors (single-crop 224x224)
 
 | Model              | #Params |  GigaFLOPs  |   top-1 error  |   top-5 error   |
@@ -64,7 +66,7 @@ Validation errors (single-crop 224x224)
 | DelugeNet-104      | 51.4M   | 13.2        | 21.86           | 5.98            |
 | DelugeNet-122      | 63.6M   | 15.2        | 21.53           | 5.86            |
 
-####How to run
+#### How to run
 1. Follow the guide at [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch) repository on how to set up ImageNet dataset.<br><br>
 2. To train ImageNet-based models, you need a minimum of 8 TITAN X GPUs:
 
